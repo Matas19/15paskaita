@@ -19,15 +19,15 @@ namespace @event
         public void HandleWriteTransaction(string e)
         {
             
-            //string duomenys = $"Banko saskaite {bank.pavadinimas} pinigu kiekis pakito i {bank.likutis}";
-            if (File.Exists(_path))
+            
+            if (File.Exists(_path)) //iesko failo pagal nurodyta kelia, jei randa, prideda nauja eilute
             {
                 using(StreamWriter sw = File.AppendText(_path))
                 {
                     sw.WriteLine(e);
                 }
             }
-            else
+            else            //neradus failo, sukuria nauja ir prideda prie jo eilute
             {
                 using(StreamWriter sw = File.CreateText(_path))
                 {
